@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="ibm.data.informix_x86" Version="3.0.0.2" />
+    <PackageReference Include="Informix.Net.Core" Version="4.700.7.2021" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
     <PackageReference Include="System.Data.Odbc" Version="9.0.6" />
   </ItemGroup>

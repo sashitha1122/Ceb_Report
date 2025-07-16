@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
-using System.Data.Odbc;
+using Informix.Net.Core;
 
 namespace Ceb_Report.Repositories
 {
@@ -14,7 +14,8 @@ namespace Ceb_Report.Repositories
         // ✅ Constructor injects configuration
         public FullReportRepository(IConfiguration configuration)
         {
-            _connectionString = configuration.GetConnectionString("InformixOdbc");
+            // Ensure this key matches appsettings.json
+            _connectionString = configuration.GetConnectionString("Informix");
         }
 
         // ✅ Main method to get all reports
@@ -43,10 +44,12 @@ namespace Ceb_Report.Repositories
                 Console.WriteLine("[DEBUG] SQL Query: " + query);
 
                 Console.WriteLine("[DEBUG] Connecting to database...");
-                using var connection = new OdbcConnection(_connectionString);
-                using var command = new OdbcCommand(query, connection);
+                using var connection = new IfxConnection(_connectionString);
                 connection.Open();
                 Console.WriteLine("[DEBUG] Connection opened. Executing query...");
+
+                // Use IfxCommand explicitly
+                using var command = new IfxCommand(query, connection);
 
                 using var reader = command.ExecuteReader();
 
@@ -87,7 +90,7 @@ namespace Ceb_Report.Repositories
         {
             try
             {
-                using var connection = new OdbcConnection(_connectionString);
+                using var connection = new IfxConnection(_connectionString);
                 connection.Open();
                 connection.Close();
                 errorMessage = null;

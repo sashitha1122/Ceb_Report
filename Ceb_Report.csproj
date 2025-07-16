@@ -1,0 +1,14 @@
+<!-- ...existing content... -->
+<PropertyGroup>
+  <!-- Set the platform target to match your installed Informix ODBC Driver 4.50 architecture -->
+  <PlatformTarget>x64</PlatformTarget>
+  <!-- If you have the 32-bit driver, use <PlatformTarget>x86</PlatformTarget> instead -->
+</PropertyGroup>
+
+<ItemGroup>
+    <PackageReference Include="ibm.data.informix_x86" Version="3.0.0.2" />
+    <PackageReference Include="Informix.Net.Core" Version="4.700.7.2021" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="System.Data.Odbc" Version="9.0.6" />
+</ItemGroup>
+<!-- ...existing content... -->
