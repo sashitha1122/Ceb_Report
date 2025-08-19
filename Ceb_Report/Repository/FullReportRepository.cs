@@ -15,7 +15,7 @@ namespace Ceb_Report.Repositories
         public FullReportRepository(IConfiguration configuration)
         {
             // Ensure this key matches appsettings.json
-            _connectionString = configuration.GetConnectionString("Informix");
+            _connectionString = configuration.GetConnectionString("Informix_pos_pmnt");
         }
 
         // ✅ Main method to get all reports
